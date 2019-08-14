@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PL preprocessor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+    *{
+        border-radius :0 !important;
+    }
+</style>
+</head>
+<body style="background-color:rgba(158, 158, 158, 0.01764705882352941)">
+	<div style="margin:80px; margin-top:50px">
+
+        <div class="container" style="background-color :#fff">
+            <br />
+            <div class="jumbotron">
+                <h1>PL preprocessor</h1>
+                <p>check the syntax structure for any given <strong>PL</strong> sentence</p>
+                <h5>Ahmed Ibrahim Mahmoud Ibrahim &nbsp;&nbsp;&nbsp;<span>Sec. 1</span></h5>
+                <h5>Dept. of Computer Science <small>3<sup>Rd</sup></small></h5>
+                <h5>Logic Programming course</h5>
+            </div>
+            <p class="alert alert-warning">&nbsp;&nbsp; <strong>notice:</strong> All whitespaces will be ignored so "<strong>¬p &nbsp;&nbsp; _1 ⇒ p_1</strong>" will be "<strong>¬p_1⇒p_1</strong>" in which is wff</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p class="alert alert-info">&nbsp;&nbsp;use <strong>¬</strong> for Negation<br />&nbsp;&nbsp;use <strong>∧</strong> for Conjunction<br />&nbsp;&nbsp;use <strong>∨</strong> for Disjunction<br />&nbsp;&nbsp;use <strong>⇒</strong> for Implication<br />&nbsp;&nbsp;use <strong>⇔</strong> for Material Equivalence</p>
+
+                </div>
+                <div class="col-sm-6">
+                    <p class="alert alert-info"><strong>Examples of WFF:</strong><br />¬(q ∨ r) ⇒q ⇒ ¬¬p<br />&nbsp;&nbsp;(p ⇒ (q ⇔ r))<br />&nbsp;&nbsp;<span class="text-warning">¬(q ∨ r) ¬q ⇒ ¬¬p <b> not wff</b></span><br />&nbsp;&nbsp;<span class="text-warning">(p ∧ q) ∨ (p ¬∧ q)<b> not wff</b></span></p>
+
+                </div>
+            </div>
+            <form class="col-md-6">
+                <div class="btn-group">
+                    <input type="button" value="¬" id="n" alt="Negation" title="Negation" onclick="write_(this.value);" class="btn btn-info" />
+                    <input type="button" value="∧" id="c" title="Conjunction" onclick="write_(this.value);" class="btn btn-info" />
+                    <input type="button" value="∨" id="d" title="Disjunction" onclick="write_(this.value);" class="btn btn-info" />
+                    <input type="button" value="⇒" id="i" title="Implication" onclick="write_(this.value);" class="btn btn-info" />
+                    <input type="button" value="⇔" id="e" title="Material Equivalence" onclick="write_(this.value);" class="btn btn-info" />
+                    <br />
+                </div>
+                <input type="text" id="s" placeholder="PL Sentence.." class="form-control" />
+                <br />
+                
+                <input type="button" value="Check" id="submit" title="Check" onclick="check();" class="btn btn-warning" />
+                <div style="padding-bottom:50px"></div>
+            </form>
+            <div class="col-md-6">
+                <div style="margin-top: -5px"><br /><br /></div>
+                <p id="msg1" class="alert alert-success"> </p>
+                <p id="msg2" class="alert alert-warning"></p>
+            </div>
+        </div>
+
+        <div class="container">
+            
+        </div>
+    </div>
+
+
+
+    <script>
+        function write_(c) {
+            var s = document.getElementById("s");
+            var cursor_ = s.selectionStart;
+            s.value = s.value.substring(0, cursor_) + c + s.value.substring(s.selectionEnd, s.value.length);
+            s.selectionStart = cursor_ + 1;
+            s.selectionEnd = cursor_ + 1
+            s.focus();
+        }
+
+    </script>
+    <script src="PL_Preprocessor_q.js"></script>
+</body>
+</html>
